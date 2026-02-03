@@ -22,7 +22,7 @@ const Terms: React.FC = () => {
             </div>
             <div className="space-y-2">
               <p><span className="text-white font-semibold">Telephone:</span> (314) 866-5805</p>
-              <p><span className="text-white font-semibold">Website:</span> www.robertson-trucks.com</p>
+              <p><span className="text-white font-semibold">Website:</span> buckeye.driverdetect.io</p>
               <p><span className="text-white font-semibold">Mailing Address:</span> 10701 E Winner Road Suite 220G, Independence, MO 64052</p>
             </div>
           </div>
@@ -50,12 +50,12 @@ const Terms: React.FC = () => {
           <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
             <span className="text-[#FF4D00]">4.</span> SMS/TEXT MESSAGING TERMS AND CONDITIONS
           </h2>
-          
+
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-bold text-white mb-3 italic">4.1 Program Description</h3>
               <p className="mb-4">Buckeye Truck LLC offers an SMS/text messaging program to provide you with important updates related to our transportation services and employment opportunities. By opting in, you consent to receive automated text messages related to:</p>
-              
+
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white/5 p-5 rounded-xl border border-white/5">
                   <h4 className="text-[#FF4D00] font-bold text-xs uppercase mb-3">Operational</h4>
@@ -108,7 +108,7 @@ const Terms: React.FC = () => {
               <h3 className="text-lg font-bold text-white mb-3 italic">4.5 Opt-Out & 4.6 Support</h3>
               <p>Opt out anytime by replying <span className="text-white font-bold">STOP</span>, UNSUBSCRIBE, or QUIT. Reply <span className="text-white font-bold">HELP</span> for support, visit our website, or call (314) 866-5805.</p>
             </div>
-            
+
             <p className="text-sm">4.7 Message and data rates may apply. 4.8 No mobile information will be shared with third parties for marketing purposes.</p>
           </div>
         </section>
@@ -147,14 +147,14 @@ const Terms: React.FC = () => {
         </section>
 
         <div className="grid md:grid-cols-2 gap-8">
-           <section className="bg-white/5 p-8 rounded-3xl border border-white/5">
-             <h2 className="text-xl font-bold text-white mb-4">9. DISCLAIMER</h2>
-             <p className="text-xs uppercase leading-relaxed">Our services are provided "as is" and "as available" without warranties of any kind. We do not warrant that our services will be uninterrupted or error-free.</p>
-           </section>
-           <section className="bg-white/5 p-8 rounded-3xl border border-white/5">
-             <h2 className="text-xl font-bold text-white mb-4">10. LIMITATION</h2>
-             <p className="text-xs uppercase leading-relaxed">Buckeye Truck LLC shall not be liable for any indirect, incidental, special, or consequential damages arising out of your use of our services.</p>
-           </section>
+          <section className="bg-white/5 p-8 rounded-3xl border border-white/5">
+            <h2 className="text-xl font-bold text-white mb-4">9. DISCLAIMER</h2>
+            <p className="text-xs uppercase leading-relaxed">Our services are provided "as is" and "as available" without warranties of any kind. We do not warrant that our services will be uninterrupted or error-free.</p>
+          </section>
+          <section className="bg-white/5 p-8 rounded-3xl border border-white/5">
+            <h2 className="text-xl font-bold text-white mb-4">10. LIMITATION</h2>
+            <p className="text-xs uppercase leading-relaxed">Buckeye Truck LLC shall not be liable for any indirect, incidental, special, or consequential damages arising out of your use of our services.</p>
+          </section>
         </div>
 
         <section>
@@ -173,7 +173,7 @@ const Terms: React.FC = () => {
             <p>10701 E Winner Road Suite 220G</p>
             <p>Independence, MO 64052</p>
             <p>Phone: (314) 866-5805</p>
-            <p>Website: www.robertson-trucks.com</p>
+            <p>Website: buckeye.driverdetect.io</p>
           </div>
         </section>
       </div>

@@ -22,7 +22,7 @@ const Privacy: React.FC = () => {
             </div>
             <div className="space-y-2">
               <p><span className="text-white font-semibold">Telephone:</span> (314) 866-5805</p>
-              <p><span className="text-white font-semibold">Website:</span> www.robertson-trucks.com</p>
+              <p><span className="text-white font-semibold">Website:</span> buckeye.driverdetect.io</p>
               <p><span className="text-white font-semibold">Mailing Address:</span> 10701 E Winner Road Suite 220G, Independence, MO 64052</p>
             </div>
           </div>
@@ -156,7 +156,7 @@ const Privacy: React.FC = () => {
             <p>10701 E Winner Road Suite 220G</p>
             <p>Independence, MO 64052</p>
             <p>Phone: (314) 866-5805</p>
-            <p>Website: www.robertson-trucks.com</p>
+            <p>Website: buckeye.driverdetect.io</p>
           </div>
         </section>
       </div>
