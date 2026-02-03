@@ -7,11 +7,11 @@ export enum Page {
 }
 
 export interface ContactFormData {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  subject: string;
-  message: string;
-  company?: string;
+  phone: string;
+  smsConsent: boolean;
 }
 
 export interface NavItem {

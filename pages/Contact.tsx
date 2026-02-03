@@ -2,22 +2,37 @@
 import React, { useState } from 'react';
 import { ContactFormData } from '../types';
 
+const countries = [
+  { code: 'US', dial_code: '+1', flag: '🇺🇸', name: 'United States' },
+  { code: 'CA', dial_code: '+1', flag: '🇨🇦', name: 'Canada' },
+  { code: 'GB', dial_code: '+44', flag: '🇬🇧', name: 'United Kingdom' },
+  { code: 'AU', dial_code: '+61', flag: '🇦🇺', name: 'Australia' },
+  { code: 'DE', dial_code: '+49', flag: '🇩🇪', name: 'Germany' },
+  { code: 'FR', dial_code: '+33', flag: '🇫🇷', name: 'France' },
+  { code: 'AE', dial_code: '+971', flag: '🇦🇪', name: 'UAE' },
+  { code: 'MX', dial_code: '+52', flag: '🇲🇽', name: 'Mexico' },
+  { code: 'BR', dial_code: '+55', flag: '🇧🇷', name: 'Brazil' },
+  { code: 'CN', dial_code: '+86', flag: '🇨🇳', name: 'China' },
+  { code: 'IN', dial_code: '+91', flag: '🇮🇳', name: 'India' },
+];
+
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState<ContactFormData>({
-    fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    subject: 'Auto Transport Inquiry',
-    message: '',
-    company: ''
+    phone: '',
+    smsConsent: false
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState(countries[0]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
@@ -26,8 +41,13 @@ const Contact: React.FC = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target as HTMLInputElement;
+    if (type === 'checkbox') {
+      const checked = (e.target as HTMLInputElement).checked;
+      setFormData(prev => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   if (submitted) {
@@ -40,9 +60,9 @@ const Contact: React.FC = () => {
         </div>
         <h2 className="text-5xl font-bold text-white mb-6 italic">Request Received!</h2>
         <p className="text-xl text-slate-400 mb-10">
-          Thank you for reaching out, {formData.fullName.split(' ')[0]}. One of our logistics specialists will contact you shortly with a customized quote.
+          Thank you for reaching out, {formData.firstName}. One of our logistics specialists will contact you shortly with a customized quote.
         </p>
-        <button 
+        <button
           onClick={() => setSubmitted(false)}
           className="px-10 py-4 bg-white text-black rounded-full font-bold hover:bg-[#FF4D00] hover:text-white transition-all"
         >
@@ -93,70 +113,125 @@ const Contact: React.FC = () => {
         </div>
 
         <div className="bg-white/5 p-10 rounded-[40px] border border-white/10 backdrop-blur-xl">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-white flex items-center gap-2">
+              Get In Touch
+            </h2>
+            <p className="text-slate-400 mt-2">Input your information to learn about our services!</p>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Full Name</label>
+                <label className="text-sm font-semibold text-slate-300 ml-1">
+                  First Name <span className="text-red-500">*</span>
+                </label>
                 <input
                   required
                   type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  name="firstName"
+                  value={formData.firstName}
                   onChange={handleChange}
                   className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] text-white transition-all outline-none"
-                  placeholder="John Smith"
+                  placeholder="John"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Email Address</label>
+                <label className="text-sm font-semibold text-slate-300 ml-1">
+                  Last Name <span className="text-red-500">*</span>
+                </label>
                 <input
                   required
-                  type="email"
-                  name="email"
-                  value={formData.email}
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
                   onChange={handleChange}
                   className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] text-white transition-all outline-none"
-                  placeholder="john@example.com"
+                  placeholder="Doe"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Subject</label>
-              <select
-                name="subject"
-                value={formData.subject}
+              <label className="text-sm font-semibold text-slate-300 ml-1">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <input
+                required
+                type="email"
+                name="email"
+                value={formData.email}
                 onChange={handleChange}
-                className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] text-white transition-all outline-none"
-              >
-                <option className="bg-[#050505]">Auto Transport Inquiry</option>
-                <option className="bg-[#050505]">Bulk Hauling Quote</option>
-                <option className="bg-[#050505]">Service Update</option>
-                <option className="bg-[#050505]">General Question</option>
-              </select>
+                className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] text-white transition-all outline-none"
+                placeholder="john@example.com"
+              />
             </div>
 
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-slate-500 ml-1">Your Message</label>
-              <textarea
-                required
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] text-white transition-all outline-none resize-none"
-                placeholder="Include vehicle details and preferred shipping dates..."
-              ></textarea>
+              <label className="text-sm font-semibold text-slate-300 ml-1">
+                Phone <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-3">
+                <div className="relative group">
+                  <select
+                    value={selectedCountry.code}
+                    onChange={(e) => {
+                      const country = countries.find(c => c.code === e.target.value);
+                      if (country) setSelectedCountry(country);
+                    }}
+                    className="w-[100px] appearance-none px-4 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] text-white transition-all outline-none cursor-pointer"
+                  >
+                    {countries.map(country => (
+                      <option key={country.code} value={country.code} className="bg-[#050505]">
+                        {country.flag} {country.dial_code}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-slate-400">
+                    <svg className="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                    </svg>
+                  </div>
+                </div>
+                <input
+                  required
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="flex-1 px-6 py-4 rounded-2xl bg-white/5 border border-white/10 focus:border-[#FF4D00] focus:ring-1 focus:ring-[#FF4D00] text-white transition-all outline-none"
+                  placeholder="(555) 123-4567"
+                />
+              </div>
+            </div>
+
+            <div className="flex gap-4 items-start">
+              <div className="flex items-center h-6">
+                <input
+                  required
+                  id="smsConsent"
+                  name="smsConsent"
+                  type="checkbox"
+                  checked={formData.smsConsent}
+                  onChange={handleChange}
+                  className="w-5 h-5 text-[#FF4D00] border-white/20 rounded bg-white/5 focus:ring-[#FF4D00] cursor-pointer"
+                />
+              </div>
+              <label htmlFor="smsConsent" className="text-xs text-slate-400 leading-relaxed cursor-pointer select-none">
+                By providing a telephone number, clicking this button, and submitting the form, you are consenting to be contacted by SMS text message from Buckeye Truck LLC regarding Account Notification and new offers (our message frequency may vary). Message & data rates apply. Reply STOP to unsubscribe. Reply HELP for more information. See our Privacy Policy at the bottom of the page.
+              </label>
             </div>
 
             <button
               disabled={isSubmitting}
               type="submit"
-              className={`w-full py-5 rounded-2xl font-bold text-lg transition-all transform active:scale-95 flex items-center justify-center gap-2 ${
-                isSubmitting ? 'bg-slate-700 cursor-not-allowed' : 'bg-[#FF4D00] text-white hover:bg-white hover:text-black shadow-lg shadow-[#FF4D00]/20'
-              }`}
+              className={`w-full py-5 rounded-2xl font-bold text-lg transition-all transform active:scale-95 flex items-center justify-center gap-3 ${isSubmitting ? 'bg-slate-700 cursor-not-allowed' : 'bg-gradient-to-r from-[#FF4D00] to-[#FF3D4A] text-white hover:opacity-90 shadow-xl shadow-[#FF4D00]/20'
+                }`}
             >
-              {isSubmitting ? 'Sending Request...' : 'Get My Free Quote'}
+              <svg className="w-6 h-6 rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+              </svg>
+              {isSubmitting ? 'Sending...' : 'Submit'}
             </button>
           </form>
         </div>
