@@ -1,0 +1,9 @@
+
+{
+  "name": "Buckeye Truck LLC",
+  "description": "Premium car hauling and freight solutions specializing in nationwide retail transport.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
