@@ -208,7 +208,6 @@ const Contact: React.FC = () => {
             <div className="flex gap-4 items-start">
               <div className="flex items-center h-6">
                 <input
-                  required
                   id="smsConsent"
                   name="smsConsent"
                   type="checkbox"
