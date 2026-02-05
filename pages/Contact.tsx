@@ -217,7 +217,7 @@ const Contact: React.FC = () => {
                 />
               </div>
               <label htmlFor="smsConsent" className="text-xs text-slate-400 leading-relaxed cursor-pointer select-none">
-                By providing your phone number and checking this box, you agree to receive SMS messages from Buckeye Truck LLC including load status updates, delivery notifications, appointment reminders, application status updates, and DOT/FMCSA compliance alerts. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not a condition of purchase. Your mobile information will not be sold or shared with third parties for promotional or marketing purposes.
+                By providing your phone number and checking this box, you agree to receive SMS messages from Buckeye Truck LLC including load status updates, delivery notifications, appointment reminders, application status updates, and DOT/FMCSA compliance alerts. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply HELP for help. Your mobile information will not be sold or shared with third parties for promotional or marketing purposes.
               </label>
             </div>
 
